@@ -1,0 +1,47 @@
+{
+  "name": "reflux-promise",
+  "version": "1.0.0",
+  "description": "Extension to reflux-core to use Promises.",
+  "main": "lib/index.js",
+  "scripts": {
+    "clean": "rimraf ./lib",
+    "test:mocha": "mocha",
+    "test": "npm run test:mocha",
+    "lint:src": "eslint src/",
+    "lint": "npm run lint:src",
+    "compile": "npm run clean && babel src --out-dir lib",
+    "build": "npm run compile && npm run test"
+  },
+  "author": "Mikael Brassman",
+  "license": "BSD-3-Clause",
+  "keywords": [
+    "reflux",
+    "flux",
+    "architecture",
+    "dataflow",
+    "action",
+    "events",
+    "data"
+  ],
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/reflux/reflux-promise.git"
+  },
+  "bugs": {
+    "url": "http://github.com/reflux/reflux-promise/issues"
+  },
+  "peerDependencies": {
+    "reflux-core": "^3.0.0"
+  },
+  "devDependencies": {
+    "babel": "^5.8.19",
+    "babel-eslint": "^4.0.5",
+    "eslint": "^0.24.1",
+    "chai": "^3.3.0",
+    "chai-as-promised": "^5.1.0",
+    "mocha": "latest",
+    "q": "^1.4.1",
+    "rimraf": "^2.4.2",
+    "sinon": "^1.17.1"
+  }
+}
