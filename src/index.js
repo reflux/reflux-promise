@@ -19,7 +19,7 @@ function createFunctions(Reflux, promiseFactory) {
             this.children.indexOf("completed") >= 0 &&
             this.children.indexOf("failed") >= 0;
 
-        var promise = promiseFactory(function(resolve, reject) {
+        var promise = new promiseFactory(function(resolve, reject) {
             // If `listenAndPromise` is listening
             // patch `promise` w/ context-loaded resolve/reject
             if (me.willCallPromise) {
