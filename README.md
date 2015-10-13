@@ -36,7 +36,7 @@ To install promise functionality do the following in your application's bootstra
 
 ```javascript
 // this creates 'load', 'load.completed' and 'load.failed'
-var { load } = Reflux.createcActions({
+var { load } = Reflux.createActions({
     "load": {children: ["completed","failed"]}
 });
 ```
