@@ -37,16 +37,18 @@ function createFunctions(Reflux, PromiseFactory) {
             }
 
             if (canHandlePromise) {
-                var removeSuccess = me.completed.listen(function(argsArr) {
+                var removeSuccess = me.completed.listen(function () {
+                    var args = Array.prototype.slice.call(arguments);
                     removeSuccess();
                     removeFailed();
-                    resolve(argsArr);
+                    resolve(args.length > 1 ? args : args[0]);
                 });
 
-                var removeFailed = me.failed.listen(function(argsArr) {
+                var removeFailed = me.failed.listen(function () {
+                    var args = Array.prototype.slice.call(arguments);
                     removeSuccess();
                     removeFailed();
-                    reject(argsArr);
+                    reject(args.length > 1 ? args : args[0]);
                 });
             }
 
