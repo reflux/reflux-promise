@@ -1,4 +1,4 @@
-function createFunctions(Reflux, promiseFactory) {
+function createFunctions(Reflux, PromiseFactory) {
 
     const _ = Reflux.utils;
 
@@ -19,7 +19,7 @@ function createFunctions(Reflux, promiseFactory) {
             this.children.indexOf("completed") >= 0 &&
             this.children.indexOf("failed") >= 0;
 
-        var promise = new promiseFactory(function(resolve, reject) {
+        var createdPromise = new PromiseFactory(function(resolve, reject) {
             // If `listenAndPromise` is listening
             // patch `promise` w/ context-loaded resolve/reject
             if (me.willCallPromise) {
@@ -57,16 +57,16 @@ function createFunctions(Reflux, promiseFactory) {
             }
         });
 
-        return promise;
+        return createdPromise;
     }
 
     /**
      * Attach handlers to promise that trigger the completed and failed
      * child publishers, if available.
      *
-     * @param {Object} The promise to attach to
+     * @param {Object} p The promise to attach to
      */
-    function promise(promise) {
+    function promise(p) {
         var me = this;
 
         var canHandlePromise =
@@ -77,7 +77,7 @@ function createFunctions(Reflux, promiseFactory) {
             throw new Error("Publisher must have \"completed\" and \"failed\" child publishers");
         }
 
-        promise.then(function(response) {
+        p.then(function(response) {
             return me.completed(response);
         }, function(error) {
             return me.failed(error);
@@ -102,8 +102,8 @@ function createFunctions(Reflux, promiseFactory) {
             }
 
             var args = arguments,
-                promise = callback.apply(bindContext, args);
-            return me.promise.call(me, promise);
+                returnedPromise = callback.apply(bindContext, args);
+            return me.promise.call(me, returnedPromise);
         }, bindContext);
 
         return function () {

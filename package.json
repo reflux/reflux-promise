@@ -7,8 +7,7 @@
     "clean": "rimraf ./lib",
     "test:mocha": "mocha",
     "test": "npm run test:mocha",
-    "lint:src": "eslint src/",
-    "lint": "npm run lint:src",
+    "lint": "eslint src/",
     "compile": "npm run clean && babel src --out-dir lib",
     "build": "npm run compile && npm run test"
   },
