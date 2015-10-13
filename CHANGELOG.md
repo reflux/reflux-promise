@@ -1,0 +1,13 @@
+# Changelog
+
+## v1.0.1
+
+* Fixing Promise not constructed using 'new' [#3](https://github.com/reflux/reflux-promise/pull/3)
+
+* Fix typo in README [#2](https://github.com/reflux/reflux-promise/pull/2)
+
+* Fix wrong version of reflux-core specified in package.json [#1](https://github.com/reflux/reflux-promise/pull/2)
+
+## v1.0.0
+
+* Extracted from [reflux-core](https://github.com/reflux/reflux-core) and modified slightly
