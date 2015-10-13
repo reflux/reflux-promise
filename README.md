@@ -16,19 +16,21 @@ The following command installs `reflux-promise` as an npm package:
 
 To install promise functionality do the following in your application's bootstrapper:
 
-    import Reflux from "reflux";
-    import RefluxPromise from "reflux-promise";
+```javascript
+import Reflux from "reflux";
+import RefluxPromise from "reflux-promise";
 
-    // Uses the user agent's Promise implementation
-    Reflux.use(RefluxPromise(window.Promise));
+// Uses the user agent's Promise implementation
+Reflux.use(RefluxPromise(window.Promise));
 
-    // Uses Q
-    import Q from "q";
-    Reflux.use(RefluxPromise(Q.Promise));
+// Uses Q
+import Q from "q";
+Reflux.use(RefluxPromise(Q.Promise));
 
-    // Uses bluebird
-    import bluebird from "bluebird";
-    Reflux.use(RefluxPromise(bluebird))
+// Uses bluebird
+import bluebird from "bluebird";
+Reflux.use(RefluxPromise(bluebird))
+```
 
 ### Extensions to Asynchronous actions
 
