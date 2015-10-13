@@ -31,7 +31,7 @@
     "url": "http://github.com/reflux/reflux-promise/issues"
   },
   "peerDependencies": {
-    "reflux-core": "^3.0.0"
+    "reflux-core": "^0.3.0"
   },
   "devDependencies": {
     "babel": "^5.8.19",
