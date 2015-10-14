@@ -126,6 +126,7 @@ function createFunctions(Reflux, PromiseFactory) {
 export default function(promiseFactory) {
     return function(Reflux) {
         const { triggerPromise, promise, listenAndPromise } = createFunctions(Reflux, promiseFactory);
+        Reflux.PublisherMethods.triggerPromise = triggerPromise;
         Reflux.PublisherMethods.triggerAsync = triggerPromise;
         Reflux.PublisherMethods.promise = promise;
         Reflux.PublisherMethods.listenAndPromise = listenAndPromise;
