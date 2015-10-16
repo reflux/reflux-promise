@@ -1,5 +1,9 @@
 # Changelog
 
+## v1.0.2
+
+* Supports multiple arguments as array [#7](https://github.com/reflux/reflux-promise/pull/7).
+
 ## v1.0.1
 
 * Fixing Promise not constructed using 'new' [#3](https://github.com/reflux/reflux-promise/pull/3)
