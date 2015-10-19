@@ -2,7 +2,7 @@
 
 Plugin for [reflux-core](http://github.com/reflux/reflux-core) to use Promises.
 
-Here is the [API docs](docs/api.md) for reflux-promise.
+Here are the [API docs](docs/api.md) for reflux-promise.
 
 ## Installation
 
