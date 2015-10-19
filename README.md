@@ -2,6 +2,8 @@
 
 Plugin for [reflux-core](http://github.com/reflux/reflux-core) to use Promises.
 
+Here is the [API docs](docs/api.md) for reflux-promise.
+
 ## Installation
 
 You can currently install the package as an npm package.
@@ -102,24 +104,6 @@ makeGetRequest.triggerAsync('/api/something').then(function(body) {
     // Handle the API error object
 });
 ```
-
-## API
-
-### `PublisherMethods`
-
-Extensions are made in `PublisherMethods`. Both Actions and Stores will have the following methods mixed in.
-
-#### `#promise`
-
-Expects a promise object and binds the triggers of the `completed` and `failed` child actions to that promise, using `then()` and `catch()`.
-
-#### `#listenAndPromise`
-
-Expects a function that returns a promise object, which is called when the action is triggered, after which `promise` is called with the returned promise object. Essentially calls the function on trigger of the action, which then triggers the `completed` or `failed` child actions after the promise is fulfilled.
-
-#### `#triggerAsync`
-
-Is overriding `reflux-core`'s default implementation. The method will return a promise.
 
 ## Colophon
 
