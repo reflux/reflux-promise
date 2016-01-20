@@ -1,5 +1,10 @@
 # Changelog
 
+## v1.0.3
+
+* FIX: Uncaught in promise errors in console when no catch is provided [#12](https://github.com/reflux/reflux-promise/pull/12).
+* FIX: Incorrect content in npm package [#13](https://github.com/reflux/reflux-promise/issues/13)
+
 ## v1.0.2
 
 * Supports multiple arguments as array [#7](https://github.com/reflux/reflux-promise/pull/7).
