@@ -1,6 +1,6 @@
 {
   "name": "reflux-promise",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "Extension to reflux-core to use Promises.",
   "main": "lib/index.js",
   "scripts": {
