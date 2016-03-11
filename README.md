@@ -80,7 +80,7 @@ var makeGetRequest = Reflux.createAction({ asyncResult: true });
 
 var RequestStore = Reflux.createStore({
     init: function() {
-        this.listenTo(makeRequest, 'onMakeRequest');
+        this.listenTo(makeGetRequest, 'onMakeRequest');
     },
 
     onMakeGetRequest: function(url) {
