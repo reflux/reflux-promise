@@ -52,7 +52,9 @@ function createFunctions(Reflux, PromiseFactory) {
                 });
             }
 
-            me.trigger.apply(me, args);
+            _.nextTick(function () {
+                me.trigger.apply(me, args);
+            });
 
             if (!canHandlePromise) {
                 resolve();
