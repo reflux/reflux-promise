@@ -102,3 +102,42 @@ describe('Creating actions using promises', function() {
     });
 
 });
+
+describe('Promise catch error handler', function () {
+    var actions, actionNames, errPromiseResolve;
+
+    var errPromise = Q.Promise(function(resolve, reject) {
+        // errPromise resolve function is exposed
+        errPromiseResolve = resolve;
+    });
+
+    // when errorHandler is called,
+    // errPromise gets resolved with the error object
+    var errorHandler = function(err) {
+        errPromiseResolve(err);
+    };
+
+    Reflux.use(RefluxPromise(Q.Promise, errorHandler));
+
+    actionNames = { 'foo': { asyncResult: true }};
+    actions = Reflux.createActions(actionNames);
+
+    it('should be called with error when action promise throws', function() {
+        var actionError = new Error('action error');
+        var actionPromise = Q.Promise(function(resolve, reject) {
+            throw actionError;
+            resolve('bar');
+        });
+
+        actions.foo.listenAndPromise(function() {
+            return actionPromise;
+        });
+
+        actions.foo();
+
+        return Q.all([
+            assert.isRejected(actionPromise, actionError, "actionPromsie not rejected with error"),
+            assert.becomes(errPromise, actionError, "error handler not executed with thrown error"),
+        ]);
+    });
+});
