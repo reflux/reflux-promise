@@ -1,4 +1,4 @@
-function createFunctions(Reflux, PromiseFactory) {
+function createFunctions(Reflux, PromiseFactory, catchHandler) {
 
     const _ = Reflux.utils;
 
@@ -61,9 +61,10 @@ function createFunctions(Reflux, PromiseFactory) {
             }
         });
 
-        // Ensure that the promise does trigger "Uncaught (in promise)" errors in console if no error handler is added
-        // See: https://github.com/reflux/reflux-promise/issues/4
-        createdPromise.catch(function() {});
+        // Attach promise catch handler if provided
+        if (typeof (catchHandler) === "function") {
+            createdPromise.catch(catchHandler);
+        }
 
         return createdPromise;
     }
@@ -131,9 +132,9 @@ function createFunctions(Reflux, PromiseFactory) {
 /**
  * Sets up reflux with Promise functionality
  */
-export default function(promiseFactory) {
+export default function(promiseFactory, catchHandler) {
     return function(Reflux) {
-        const { triggerPromise, promise, listenAndPromise } = createFunctions(Reflux, promiseFactory);
+        const { triggerPromise, promise, listenAndPromise } = createFunctions(Reflux, promiseFactory, catchHandler);
         Reflux.PublisherMethods.triggerAsync = triggerPromise;
         Reflux.PublisherMethods.promise = promise;
         Reflux.PublisherMethods.listenAndPromise = listenAndPromise;

@@ -32,6 +32,12 @@ Reflux.use(RefluxPromise(Q.Promise));
 // Uses bluebird
 import bluebird from "bluebird";
 Reflux.use(RefluxPromise(bluebird))
+
+// Catching and logging unhandled exceptions in action handlers
+import bluebird from "bluebird";
+Reflux.use(RefluxPromise(bluebird, function(err) {
+    console.log(err);
+}))
 ```
 
 ### Extensions to Asynchronous actions
